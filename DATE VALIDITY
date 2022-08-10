@@ -1,0 +1,201 @@
+/*Date Validity*/
+/*AUTHOR : JEREEN*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h> 
+int main()
+{
+    int d,m,y,choice;
+    char mo[20];
+    printf("HELLO ! WELCOME TO DATE VALIDITY ! \nENTER THE REQUIRED DATA ASKED BELOW TO GET THE DESIRED OUTPUT \n \n");
+    printf("Enter the Date : ");
+    scanf("%d",&d);     /*DATE NUMBER GIVEN AS INPUT*/
+    printf("\n");
+    if(d<0 || d>31)      /*CHECKS THE VALIDITY OF DATE*/
+    {
+       printf("THE DATE IS INVALID !");     /*IF THE DATE DOESNT BELONG TO THE RANGE OF 1 TO 31,THE COMPILER PRINTS AN OUTPUT "THE DATE IS INVALID !" AND EXITS THE PROGRAM*/
+       exit(0);
+    }
+    printf("Enter Month as Number or Word ? \n\nEnter '1' to enter month as Number (or) Enter '2' to enter month as Word \n\n");
+    printf("Your Choice : ");
+    scanf("%d",&choice);                  /*INPUTS THE CHOICE WHETHER THE MONTH ENTERED AS WORD OR NUMBER*/
+    if(choice == 1 || choice ==2)         /*'1' TO ENTER MONTH AS NUMBER AND '2' TO ENTER MONTH AS WORD*/
+    {
+    }
+    else
+    {
+       printf("\nINVALID CHOICE !");         /*IF ANY OTHER NUMBER IS GIVEN AS INPUT OTHER THAN '1' OR '2' THE COMPILER PRINTS AN OUTPUT "INVALID CHOICE !" AND EXITS THE PROGRAM*/
+       exit(0);
+    }
+    printf("\n");
+    printf("Enter the Month : ");
+    if(choice == 1)
+    {
+       scanf("%d",&m);           /*INPUTS THE MONTH AS NUMBER BETWEEN FROM 1 TO 12 ELSE THE COMPILER PRINTS AN OUTPUT "THE MONTH IS INVALID !" AND EXITS THE PROGRAM*/
+       if(m<0 || m>12)
+       {
+          printf("THE MONTH IS INVALID !");          
+          exit(0);
+       }
+    }
+    else if(choice == 2)       /*INPUTS THE MONTH AS WORD BETWEEN FROM JANUARY TO DECEMBER AND ASSIGNS THE VALUE FOR M FROM 1 TO 12 BASED UPON THE MONTH GIVEN AS INPUT ELSE THE COMPILER PRINTS AN OUTPUT "THE MONTH IS INVALID !" AND EXITS THE PROGRAM*/  
+    {
+       scanf("%s",mo);
+          if(!strcmp(mo,"January") || !strcmp(mo,"january") || !strcmp(mo,"JANUARY"))      /*ALL MONTHS CAN EITHER BE GIVEN AS INPUT SUCH THAT ONLY THE FIRST LETTER IS IN UPPERCASE OR WHOLE WORD IS IN LOWER CASE OR WHOLE WORD IS IN UPPER CASE*/
+          {
+             m=1;
+          }
+          else if(!strcmp(mo,"February") || !strcmp(mo,"february") || !strcmp(mo,"FEBRUARY"))
+          {
+             m=2;
+          }
+          else if(!strcmp(mo,"March") || !strcmp(mo,"march") || !strcmp(mo,"MARCH"))
+          {
+             m=3;
+          }
+          else if(!strcmp(mo,"April") || !strcmp(mo,"april") || !strcmp(mo,"APRIL"))
+          {
+             m=4;
+          }
+          else if(!strcmp(mo,"May") || !strcmp(mo,"may") || !strcmp(mo,"MAY"))
+          {
+             m=5;
+          }
+          else if(!strcmp(mo,"June") || !strcmp(mo,"june") || !strcmp(mo,"JUNE"))
+          {
+             m=6;
+          }
+          else if(!strcmp(mo,"July") || !strcmp(mo,"july") || !strcmp(mo,"JULY"))
+          {
+             m=7;
+          }
+          else if(!strcmp(mo,"August") || !strcmp(mo,"august") || !strcmp(mo,"AUGUST"))
+          {
+             m=8;
+          }
+          else if(!strcmp(mo,"September") || !strcmp(mo,"september") || !strcmp(mo,"SEPTEMBER"))
+          {
+             m=9;
+          }
+          else if(!strcmp(mo,"October") || !strcmp(mo,"october") || !strcmp(mo,"OCTOBER"))
+          {
+             m=10;
+          }
+          else if(!strcmp(mo,"November") || !strcmp(mo,"november") || !strcmp(mo,"NOVEMBER"))
+          {
+             m=11;
+          }
+          else if(!strcmp(mo,"December") || !strcmp(mo,"december") || !strcmp(mo,"DECEMBER"))
+          {
+             m=12;
+          }
+    }
+    printf("\nEnter the Year : ");
+    scanf("%d",&y);       /*INPUTS THE YEAR WHICH IS ABOVE 0*/
+    printf("\n");
+    if(y>=0)
+    {
+        if(m>0 || m<=12)     /*FOR MONTHS SUCH AS JANUARY,MARCH,MAY,JULY,AUGUST,OCTOBER,DECEMBER THE DATE RANGES FROM 1 TO 31 ELSE THE COMPILER PRINTS "THE DATE IS INVALID !" AND EXITS THE PROGRAM*/
+        {
+            if(m==1||m==3||m==5||m==7||m==8||m==10||m==12)
+            {
+                if(d>0 && d<=31)
+                {
+                    printf("The given data is Valid \n");
+                    printf("The Date is : %d/%d/%d",d,m,y);
+                }
+                else
+                {
+                    printf("THE DATE IS INVALID !");
+                }
+                
+            }
+            else if(m==4||m==6||m==9||m==11)       /*FOR MONTHS SUCH AS APRIL,JUNE,SEPTEMBER,NOVEMBER THE DATE RANGES FROM 1 TO 30 ELSE THE COMPILER PRINTS "THE DATE IS INVALID !" AND EXITS THE PROGRAM*/
+            {
+                if(d>0 && d<=30)
+                {
+                    printf("The given data is Valid \n");
+                    printf("The Date is : %d/%d/%d",d,m,y);
+                }
+                else
+                {
+                    printf("THE DATE IS INVALID !");
+                }
+            }
+            else if(m==2)        /*FOR FEBRUARY MONTH THE DATE RANGES FROM 1 TO 28 OR IF ITS A NON LEAP YEAR AND RANGES FROM 1 TO 29 IF ITS A LEAP YEAR ELSE THE COMPILER PRINTS "THE DATE IS INVALID !" AND EXITS THE PROGRAM*/
+            {
+                if(y%4 == 0)     /*ONLY THE YEARS WHICH IS DIVISIBLE BY 4 AND FOR YEARS WHICH ARE DIVISIBLE BY 100 AND DIVISIBLE 400 ARE LEAP YEARS OTHERS ARE NON LEAP YEARS*/
+                {
+                   if(y%100 == 0)
+                   {
+                      if(y%400 == 0)
+                      {
+                         if(d>0 && d<=29)
+                         {
+                            printf("The given data is Valid \n");
+                            printf("The Date is : %d/%d/%d",d,m,y);
+                         }
+                         else
+                         {
+                            printf("THE DATE IS INVALID !");
+                         }
+                      }
+                      else
+                      {
+                         if(d>0 && d<=28)
+                         {
+                            printf("The given data is Valid \n");
+                            printf("The Date is : %d/%d/%d",d,m,y);
+                         }
+                         else
+                         {
+                            printf("THE DATE IS INVALID ! \n");
+                         }
+                      }
+                   }
+                   else
+                   {
+                      if(d>0 && d<=29)
+                      {
+                         printf("The given data is Valid \n");
+                         printf("The Date is : %d/%d/%d",d,m,y);
+                      }
+                      else
+                      {
+                         printf("THE DATE IS INVALID !");
+                      }
+                   }
+                }
+                else
+                {
+                   if(d>0 && d<=28)
+                   {
+                      printf("The given data is Valid \n");
+                      printf("The Date is : %d/%d/%d",d,m,y);
+                   }
+                   else
+                   {
+                      printf("THE DATE IS INVALID !");
+                   }
+                }
+            }
+            else
+            {
+               printf("THE MONTH IS INVALID !");
+            }
+        }
+        else
+        {
+           printf("THE MONTH IS INVALID !");
+        }
+    }
+    else
+    {
+       printf("The YEAR IS INVALID ! \n");
+    }
+    return 0;
+}
+
+
+
